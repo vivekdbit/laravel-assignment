@@ -28,6 +28,8 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
+                                <th>Total Orders </th>
+                                <th>Total Order Amount</th>
                                 <th>Company</th>
                                 <th>First Name</th>
                                 <th>Last Name</th>
@@ -198,10 +200,19 @@
         $('#users-table').DataTable({
             processing: true,
             serverSide: true,
+            scrollX: true,
             ajax: '{{ url('grid') }}',
             columns: [{
                     data: 'id',
                     name: 'id'
+                },
+                {
+                    data: 'orders_total',
+                    name: 'orders_total'
+                },
+                {
+                    data: 'orders_amount_total',
+                    name: 'orders_amount_total'
                 },
                 {
                     data: 'company',
@@ -335,16 +346,16 @@
             var tr = $( target ).closest( 'tr' );
             var tds = tr.find( 'td' );
 
-            $( '#company' ).val( tds.eq(1).text() );
-            $( '#first_name' ).val( tds.eq(2).text() );
-            $( '#last_name' ).val( tds.eq(3).text() );
-            $( '#email_address' ).val( tds.eq(4).text() );
-            $( '#job_title' ).val( tds.eq(5).text() );
-            $( '#business_phone' ).val( tds.eq(6).text() );
-            $( '#address' ).val( tds.eq(7).text() );
-            $( '#city' ).val( tds.eq(8).text() );
-            $( '#zip_postal_code' ).val( tds.eq(9).text() );
-            $( '#country_region' ).val( tds.eq(10).text() );
+            $( '#company' ).val( tds.eq(3).text() );
+            $( '#first_name' ).val( tds.eq(4).text() );
+            $( '#last_name' ).val( tds.eq(5).text() );
+            $( '#email_address' ).val( tds.eq(6).text() );
+            $( '#job_title' ).val( tds.eq(7).text() );
+            $( '#business_phone' ).val( tds.eq(8).text() );
+            $( '#address' ).val( tds.eq(9).text() );
+            $( '#city' ).val( tds.eq(10).text() );
+            $( '#zip_postal_code' ).val( tds.eq(11).text() );
+            $( '#country_region' ).val( tds.eq(12).text() );
 
         });
         var updateID;
