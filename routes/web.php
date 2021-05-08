@@ -13,5 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Customer details
 Route::get('/', 'DatatableController@index');
 Route::get('/grid', 'DatatableController@showGridData');
+
+// Customer CRUD
+Route::post('/customer', 'CustomerController@store');
+Route::put('/customer/{id}', 'CustomerController@update');
+Route::delete('/customer/{id}', 'CustomerController@destroy');

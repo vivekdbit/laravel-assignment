@@ -15,6 +15,18 @@ class DatatableController extends Controller
 
     public function showGridData()
     {
-        return Datatables::of(customer::query())->make(true);
+        $data = customer::query()->get();
+        
+        return Datatables::of($data)->addColumn('action', function($data){
+            
+            $button = '<button type="button" class="btn btn-success btn-sm" id="getEditCustomerData" data-toggle="modal" data-target="#CreateCustomerModal" data-id="'.$data->id.'">Edit</button>';
+
+            $button .= '&nbsp;<button type="button" data-id="'.$data->id.'" data-toggle="modal" data-target="#DeleteCustomerModal" class="btn btn-danger btn-sm" id="getDeleteId">Delete</button>';
+
+
+            return $button;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
     }
 }
